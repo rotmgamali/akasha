@@ -1,12 +1,21 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Bookmark, Trash2 } from 'lucide-react';
+import { masterImages } from '../data/image_map';
 
 const SavedView = ({ onBack, savedItems, onRemove }) => {
     return (
         <div className="min-h-screen bg-deep-space relative overflow-hidden flex flex-col">
-            {/* Background */}
-            <div className="fixed inset-0 bg-galaxy-gradient opacity-30 pointer-events-none" />
+            {/* Background Image Underlay */}
+            <div
+                className="absolute inset-0 opacity-20 pointer-events-none"
+                style={{
+                    backgroundImage: `url(${masterImages.portal})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                }}
+            />
+            <div className="fixed inset-0 bg-galaxy-gradient opacity-20 pointer-events-none" />
 
             {/* Header */}
             <header className="relative z-10 p-6 flex items-center gap-4 border-b border-white/5 backdrop-blur-md">

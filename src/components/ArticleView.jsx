@@ -105,10 +105,10 @@ const ArticleView = ({ excerpt, onClose, onToggleSave, isSaved }) => {
                 </header>
 
                 {/* Content Area */}
-                <div className="flex-1 overflow-y-auto p-8 md:p-12 custom-scrollbar">
+                <div className="flex-1 overflow-y-auto p-6 md:p-12 custom-scrollbar">
 
                     {/* Meta Data */}
-                    <div className="flex flex-wrap gap-4 items-center mb-8 text-xs font-mono tracking-wider text-gray-500 border-b border-white/5 pb-8">
+                    <div className="flex flex-wrap gap-4 items-center mb-6 md:mb-8 text-xs font-mono tracking-wider text-gray-500 border-b border-white/5 pb-6 md:pb-8">
                         <span className={`px-2 py-1 rounded bg-gradient-to-r ${gradient} bg-opacity-10 text-white bg-clip-text text-transparent bg-clip-text font-bold uppercase`}>
                             {excerpt.sphereTitle}
                         </span>
@@ -122,8 +122,8 @@ const ArticleView = ({ excerpt, onClose, onToggleSave, isSaved }) => {
                         </span>
                     </div>
 
-                    {/* Title (Excerpt doesn't have a specific title, so we use a generative one or snippet) */}
-                    <h1 className="text-3xl md:text-5xl font-cinzel text-white leading-tight mb-12 drop-shadow-lg">
+                    {/* Title */}
+                    <h1 className="text-2xl md:text-5xl font-cinzel text-white leading-tight mb-8 md:mb-12 drop-shadow-lg">
                         Transmission regarding <span className={`bg-gradient-to-r ${gradient} bg-clip-text text-transparent`}>
                             {excerpt.content.split(' ').slice(0, 5).join(' ')}...
                         </span>

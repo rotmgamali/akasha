@@ -140,7 +140,7 @@ const HolocronView = ({ onNavigate, onToggleSave, savedExcerpts, onOpenArticle }
 
             {/* Spheres Grid */}
             <main className="flex-1 overflow-y-auto p-6 md:p-12 relative z-10 custom-scrollbar">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
                     {filteredSpheres.map((sphere, index) => {
                         const isSelected = selectedSphere?.id === sphere.id;
 

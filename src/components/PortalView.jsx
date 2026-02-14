@@ -148,7 +148,7 @@ const PortalView = ({ onEnter }) => {
                     transition={{ delay: 0.5, duration: 1 }}
                     className="mt-16 text-center"
                 >
-                    <h1 className="text-6xl md:text-8xl font-cinzel font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 mb-4 tracking-wider">
+                    <h1 className="text-5xl md:text-8xl font-cinzel font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 mb-4 tracking-wider">
                         AKASHA
                     </h1>
                     <p className="text-sm md:text-base font-light text-gray-400 tracking-[0.5em] uppercase">

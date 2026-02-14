@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Calendar, Clock, ChevronDown, ChevronUp, Filter, BookOpen } from 'lucide-react';
 import wisdomData from '../data/wisdom_data.json';
+import { masterImages } from '../data/image_map';
 
 const TimelineView = ({ onBack, onOpenArticle }) => {
     const [sortAsc, setSortAsc] = useState(false); // Default to newest first (descending)
@@ -59,7 +60,15 @@ const TimelineView = ({ onBack, onOpenArticle }) => {
 
     return (
         <div className="min-h-screen bg-deep-space relative overflow-hidden flex flex-col">
-            {/* Background */}
+            {/* Background Image Underlay */}
+            <div
+                className="fixed inset-0 opacity-10 pointer-events-none"
+                style={{
+                    backgroundImage: `url(${masterImages.portal})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                }}
+            />
             <div className="fixed inset-0 bg-galaxy-gradient opacity-20 pointer-events-none" />
 
             {/* Header */}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Sun, ArrowLeft, RefreshCw, Share2, Bookmark } from 'lucide-react';
 import wisdomData from '../data/wisdom_data.json';
+import { masterImages } from '../data/image_map';
 
 const DailyView = ({ onBack, onToggleSave, isSaved }) => {
     const [dailyWisdom, setDailyWisdom] = useState(null);
@@ -21,7 +22,17 @@ const DailyView = ({ onBack, onToggleSave, isSaved }) => {
     if (!dailyWisdom) return null;
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center relative p-6">
+        <div className="min-h-screen flex flex-col items-center justify-center relative p-6 bg-deep-space">
+            {/* Background Image Underlay */}
+            <div
+                className="absolute inset-0 opacity-20 pointer-events-none"
+                style={{
+                    backgroundImage: `url(${masterImages.source})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                }}
+            />
+            <div className="absolute inset-0 bg-galaxy-gradient opacity-10 pointer-events-none" />
 
             {/* Header Controls */}
             <div className="absolute top-6 left-6 z-20">
