@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Layers, Sparkles } from 'lucide-react';
+import { masterImages } from '../data/image_map';
 
 const PortalView = ({ onEnter }) => {
     const [isHovering, setIsHovering] = useState(false);
@@ -20,8 +21,18 @@ const PortalView = ({ onEnter }) => {
         <div className="min-h-screen bg-black text-white flex items-center justify-center overflow-hidden relative font-sans">
             {/* Animated Background Layers */}
             <div className="absolute inset-0">
+                {/* Background Image Underlay */}
+                <div
+                    className="absolute inset-0 opacity-40 mix-blend-screen transition-opacity duration-1000"
+                    style={{
+                        backgroundImage: `url(${masterImages.portal})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}
+                />
+
                 {/* Deep space layer */}
-                <div className="absolute inset-0 bg-gradient-to-b from-indigo-950 via-purple-950 to-black opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/80 via-purple-950/80 to-black opacity-90" />
 
                 {/* Rotating nebula */}
                 <motion.div

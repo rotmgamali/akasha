@@ -116,6 +116,32 @@ export const galacticLore = {
             gradient: "from-amber-700 via-orange-800 to-red-900",
             icon: "Cat",
             relatedSpheres: ["galactic-history-exopolitics"]
+        },
+        {
+            id: "reptilians",
+            name: "The Reptilian Resistance",
+            system: "Alpha Draconis / Orion (Inner Earth Enclaves)",
+            density: "4th - 5th Density (Negative/Positive)",
+            theme: "The Catalyst of Polarity & Shadow Work",
+            appearance: "Scaly skin, vertical pupils, powerful muscular builds. Some are winged.",
+            traits: ["Master Strategists", "Shadow Catalysts", "Ancient Inhabitants", "Telepathic Power"],
+            description: "Often misunderstood and polarized, the Reptilians have served as the primary 'negative catalyst' for Earth's evolution. While some groups have sought control through fear, others are now transitioning into higher densities of peace. They challenge humanity to integrate its shadow and move beyond the illusion of separation.",
+            gradient: "from-green-900 via-gray-800 to-black",
+            icon: "ShieldAlert",
+            relatedSpheres: ["galactic-history-exopolitics", "universal-metaphysics-the-law-of-one"]
+        },
+        {
+            id: "orion",
+            name: "The Orion Group",
+            system: "Betelgeuse / Rigel (Orion)",
+            density: "4th - 6th Density",
+            theme: "Power, Hierarchies & The Battle for Sovereignty",
+            appearance: "Vast variety of forms, often wearing complex technological suits or appearing as dark energetic clouds.",
+            traits: ["Technological Overlords", "Hierarchy Masters", "Conquerors", "Polarity Extremists"],
+            description: "The Orion Group represents the pinnacle of the 'Service-to-Self' path in our sector. Their history is one of conquest and control, but also of the eventual realization that unity is the only sustainable end. Interacting with Orion energy is the ultimate test of a soul's sovereignty and commitment to its own light.",
+            gradient: "from-red-900 via-purple-950 to-black",
+            icon: "Crown",
+            relatedSpheres: ["galactic-history-exopolitics"]
         }
     ],
     topics: [

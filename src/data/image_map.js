@@ -16,7 +16,9 @@ export const civilizationImages = {
     'lyrans': '/images/civilization_lyrans_1771111050226.png',
     'lemurians': '/images/civilization_lemurians_1771111064781.png',
     'atlanteans': '/images/civilization_atlanteans_1771111080714.png',
-    'ziorbians': '/images/civilization_ziorbians_1771111096757.png'
+    'ziorbians': '/images/civilization_ziorbians_1771111096757.png',
+    'reptilians': '/images/civilization_reptilians_1771112934837.png',
+    'orion': '/images/civilization_orion_1771112948108.png'
 };
 
 export const topicImages = {
@@ -28,4 +30,13 @@ export const topicImages = {
     'galactic-history': '/images/topic_galactic_history_1771111231624.png',
     'inner-earth': '/images/topic_inner_earth_1771111247473.png',
     'void': '/images/topic_void_1771111261503.png'
+};
+
+export const masterImages = {
+    'portal': '/images/portal_background_1771112963801.png',
+    'source': '/images/source_consciousness_1771113050718.png',
+    'solar-flash': '/images/master_solar_flash_1771112977929.png',
+    'dna-activation': '/images/master_12_strand_dna_1771112992137.png',
+    'agartha': '/images/master_agartha_city_1771113007803.png',
+    'great-pyramid': '/images/master_great_pyramid_1771113023745.png'
 };

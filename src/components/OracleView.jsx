@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, ArrowLeft, Sparkles } from 'lucide-react';
 import wisdomData from '../data/wisdom_data.json';
+import { masterImages } from '../data/image_map';
 
 const OracleView = ({ onBack }) => {
     const [messages, setMessages] = useState([
@@ -78,7 +79,15 @@ const OracleView = ({ onBack }) => {
     return (
         <div className="min-h-screen bg-deep-space flex flex-col relative overflow-hidden">
             {/* Background */}
-            <div className="absolute inset-0 bg-galaxy-gradient opacity-20 pointer-events-none" />
+            <div
+                className="absolute inset-0 opacity-20 transition-opacity duration-1000"
+                style={{
+                    backgroundImage: `url(${masterImages.source})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                }}
+            />
+            <div className="absolute inset-0 bg-galaxy-gradient opacity-10 pointer-events-none" />
             <div className="absolute top-0 w-full h-64 bg-gradient-to-b from-purple-900/20 to-transparent pointer-events-none" />
 
             {/* Header */}

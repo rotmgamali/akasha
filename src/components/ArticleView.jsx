@@ -1,15 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Clock, Calendar, Bookmark, Share2, X } from 'lucide-react';
+import { masterImages } from '../data/image_map';
 
 const ArticleView = ({ excerpt, onClose, onToggleSave, isSaved }) => {
     const [readTime, setReadTime] = useState(0);
+    const [bgImage, setBgImage] = useState(null);
 
     useEffect(() => {
         if (excerpt) {
             const words = excerpt.content.trim().split(/\s+/).length;
             const time = Math.ceil(words / 200); // 200 words per minute
             setReadTime(time);
+
+            // Determine relevant background image based on keywords
+            const content = excerpt.content.toLowerCase();
+            if (content.includes('solar flash') || content.includes('pulse') || content.includes('sun')) {
+                setBgImage(masterImages['solar-flash']);
+            } else if (content.includes('dna') || content.includes('genetic') || content.includes('molecule')) {
+                setBgImage(masterImages['dna-activation']);
+            } else if (content.includes('pyramid') || content.includes('giza') || content.includes('anchor')) {
+                setBgImage(masterImages['great-pyramid']);
+            } else if (content.includes('agartha') || content.includes('telos') || content.includes('inner earth')) {
+                setBgImage(masterImages['agartha']);
+            } else {
+                setBgImage(null);
+            }
         }
     }, [excerpt]);
 
@@ -35,6 +51,26 @@ const ArticleView = ({ excerpt, onClose, onToggleSave, isSaved }) => {
         >
             {/* Dynamic Background */}
             <div className={`fixed inset-0 bg-gradient-to-br ${gradient} opacity-5 pointer-events-none`} />
+
+            {/* Contextual Master Image Background */}
+            <AnimatePresence mode="wait">
+                {bgImage && (
+                    <motion.div
+                        key={bgImage}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 0.25 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 1 }}
+                        className="fixed inset-0 pointer-events-none"
+                        style={{
+                            backgroundImage: `url(${bgImage})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                        }}
+                    />
+                )}
+            </AnimatePresence>
+
             <div className="fixed inset-0 bg-[url('/noise.png')] opacity-20 pointer-events-none" />
 
             {/* Progress Bar (at top) */}
