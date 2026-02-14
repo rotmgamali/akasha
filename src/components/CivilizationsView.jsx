@@ -1,4 +1,3 @@
-```javascript
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Star, Sun, Droplets, Circle, Hexagon, Mountain, Wind } from 'lucide-react';
@@ -35,7 +34,7 @@ const CivilizationsView = ({ onBack, onSelectCivilization }) => {
 
             <main className="relative z-10 p-8 max-w-7xl mx-auto pb-24">
                 <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
-                    The galaxy is teething with life. Explore the advanced consciousnesses that maintain the cosmic balance and guide the evolution of worlds.
+                    The galaxy is teeming with life. Explore the advanced consciousnesses that maintain the cosmic balance and guide the evolution of worlds.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -51,18 +50,18 @@ const CivilizationsView = ({ onBack, onSelectCivilization }) => {
                                 className="relative h-80 rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 border border-white/5 hover:border-cyan-500/30 hover:scale-[1.05] group card-lift"
                             >
                                 {/* Background Image */}
-                                <div 
+                                <div
                                     className="absolute inset-0 transition-all duration-500"
                                     style={{
-                                        backgroundImage: `url(${ civilizationImages[civ.id]})`,
+                                        backgroundImage: `url(${civilizationImages[civ.id]})`,
                                         backgroundSize: 'cover',
                                         backgroundPosition: 'center',
                                         opacity: 0.3
                                     }}
                                 />
-                                
+
                                 {/* Glassmorphism Overlay */}
-                                <div className={`absolute inset - 0 bg - gradient - to - br opacity - 70 backdrop - blur - sm group - hover: opacity - 80 transition - opacity ${ civ.gradient } `} />
+                                <div className={`absolute inset-0 bg-gradient-to-br opacity-70 backdrop-blur-sm group-hover:opacity-80 transition-opacity ${civ.gradient}`} />
 
                                 {/* Content */}
                                 <div className="relative z-10 p-8 h-full flex flex-col justify-between">
