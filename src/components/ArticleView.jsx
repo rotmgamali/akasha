@@ -47,7 +47,7 @@ const ArticleView = ({ excerpt, onClose, onToggleSave, isSaved }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-deep-space flex justify-center overflow-hidden"
+            className="fixed inset-0 z-50 bg-deep-space flex justify-center overflow-y-auto custom-scrollbar"
         >
             {/* Dynamic Background */}
             <div className={`fixed inset-0 bg-gradient-to-br ${gradient} opacity-5 pointer-events-none`} />

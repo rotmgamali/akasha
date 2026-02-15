@@ -77,7 +77,7 @@ const OracleView = ({ onBack }) => {
     };
 
     return (
-        <div className="min-h-screen bg-deep-space flex flex-col relative overflow-hidden">
+        <div className="min-h-screen bg-deep-space flex flex-col relative">
             {/* Background */}
             <div
                 className="absolute inset-0 opacity-20 transition-opacity duration-1000"
@@ -114,8 +114,8 @@ const OracleView = ({ onBack }) => {
                         className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} `}
                     >
                         <div className={`max - w - [85 %] md: max - w - [70 %] p - 4 rounded - 2xl ${msg.sender === 'user'
-                                ? 'bg-purple-600/20 border border-purple-500/30 text-white rounded-tr-none'
-                                : 'bg-white/5 border border-white/10 text-purple-100 rounded-tl-none'
+                            ? 'bg-purple-600/20 border border-purple-500/30 text-white rounded-tr-none'
+                            : 'bg-white/5 border border-white/10 text-purple-100 rounded-tl-none'
                             } `}>
                             <p className="text-sm md:text-base font-light leading-relaxed whitespace-pre-wrap">{msg.text}</p>
                         </div>

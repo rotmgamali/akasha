@@ -59,7 +59,7 @@ const HolocronView = ({ onNavigate, onToggleSave, savedExcerpts, onOpenArticle }
     };
 
     return (
-        <div className="min-h-screen bg-deep-space relative overflow-hidden flex flex-col font-sans">
+        <div className="min-h-screen bg-deep-space relative overflow-y-auto flex flex-col font-sans">
             {/* Background */}
             <div className="fixed inset-0 bg-galaxy-gradient opacity-30 pointer-events-none" />
 

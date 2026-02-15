@@ -16,7 +16,7 @@ const IconMap = {
 
 const CivilizationsView = ({ onBack, onSelectCivilization }) => {
     return (
-        <div className="min-h-screen bg-deep-space text-white overflow-hidden relative font-sans">
+        <div className="min-h-screen bg-deep-space text-white overflow-y-auto relative font-sans">
             {/* Dynamic Background */}
             <div className="fixed inset-0 bg-[url('/starfield-bg.jpg')] opacity-20 bg-cover bg-center pointer-events-none" />
             <div className="fixed inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none" />

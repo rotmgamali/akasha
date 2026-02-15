@@ -59,7 +59,7 @@ const TimelineView = ({ onBack, onOpenArticle }) => {
     }, [timelineData]);
 
     return (
-        <div className="min-h-screen bg-deep-space relative overflow-hidden flex flex-col">
+        <div className="min-h-screen bg-deep-space relative overflow-y-auto flex flex-col">
             {/* Background Image Underlay */}
             <div
                 className="fixed inset-0 opacity-10 pointer-events-none"
