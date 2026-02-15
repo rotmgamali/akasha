@@ -114,7 +114,7 @@ const PortalView = ({ onEnter }) => {
                     onClick={onEnter}
                     onHoverStart={() => setIsHovering(true)}
                     onHoverEnd={() => setIsHovering(false)}
-                    className="relative z-20 mt-8 px-12 py-5 rounded-full bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-pink-500/20 border border-white/20 backdrop-blur-xl overflow-hidden group"
+                    className="relative z-20 mt-8 px-12 py-5 rounded-full bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-pink-500/20 border border-white/20 backdrop-blur-xl overflow-hidden group focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:ring-offset-2 focus:ring-offset-black"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     style={{
@@ -160,6 +160,16 @@ const PortalView = ({ onEnter }) => {
                         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                     >
                         "The Records of All That Is, Was, and Ever Shall Be"
+                    </motion.p>
+
+                    {/* Keyboard Hint */}
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1.5, duration: 0.8 }}
+                        className="mt-6 text-xs text-gray-600 font-mono"
+                    >
+                        Press <kbd className="px-2 py-1 bg-white/5 border border-white/10 rounded text-gray-400">Enter</kbd> or <kbd className="px-2 py-1 bg-white/5 border border-white/10 rounded text-gray-400">Space</kbd>
                     </motion.p>
                 </motion.div>
             </div>
