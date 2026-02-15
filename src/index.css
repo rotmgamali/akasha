@@ -4,7 +4,15 @@
 
 @layer base {
   body {
-    @apply bg-deep-space text-star font-inter overflow-hidden;
+    @apply bg-deep-space text-star font-inter;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 }
 
