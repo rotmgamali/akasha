@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Starfield from './components/Starfield';
-import PortalView from './components/PortalView';
-import HolocronView from './components/HolocronView';
-import OracleView from './components/OracleView';
-import DailyView from './components/DailyView';
-import SavedView from './components/SavedView';
-import TimelineView from './components/TimelineView';
-import ArticleView from './components/ArticleView';
-import CivilizationsView from './components/CivilizationsView';
-import CivilizationDetail from './components/CivilizationDetail';
-import TopicView from './components/TopicView';
+import StarfieldLoading from './components/StarfieldLoading';
+import ErrorBoundary from './components/ErrorBoundary';
+
+// Lazy load views for better performance
+const PortalView = lazy(() => import('./components/PortalView'));
+const HolocronView = lazy(() => import('./components/HolocronView'));
+const OracleView = lazy(() => import('./components/OracleView'));
+const DailyView = lazy(() => import('./components/DailyView'));
+const SavedView = lazy(() => import('./components/SavedView'));
+const TimelineView = lazy(() => import('./components/TimelineView'));
+const ArticleView = lazy(() => import('./components/ArticleView'));
+const CivilizationsView = lazy(() => import('./components/CivilizationsView'));
+const CivilizationDetail = lazy(() => import('./components/CivilizationDetail'));
+const TopicView = lazy(() => import('./components/TopicView'));
+
 import './index.css';
 
 function App() {
@@ -55,62 +60,66 @@ function App() {
     <div className="relative min-h-screen bg-black text-white font-sans overflow-x-hidden">
       <Starfield />
 
-      <AnimatePresence mode="wait">
-        {currentView === 'portal' && (
-          <PortalView key="portal" onEnter={() => setCurrentView('holocron')} />
-        )}
+      <ErrorBoundary>
+        <Suspense fallback={<StarfieldLoading />}>
+          <AnimatePresence mode="wait">
+            {currentView === 'portal' && (
+              <PortalView key="portal" onEnter={() => setCurrentView('holocron')} />
+            )}
 
-        {currentView === 'holocron' && (
-          <HolocronView
-            key="holocron"
-            onNavigate={(view) => setCurrentView(view)}
-            onToggleSave={toggleSave}
-            savedExcerpts={savedExcerpts} // Pass savedExcerpts prop
-            onOpenArticle={handleOpenArticle}
-          />
-        )}
+            {currentView === 'holocron' && (
+              <HolocronView
+                key="holocron"
+                onNavigate={(view) => setCurrentView(view)}
+                onToggleSave={toggleSave}
+                savedExcerpts={savedExcerpts} // Pass savedExcerpts prop
+                onOpenArticle={handleOpenArticle}
+              />
+            )}
 
-        {currentView === 'oracle' && (
-          <OracleView key="oracle" onBack={() => setCurrentView('holocron')} />
-        )}
+            {currentView === 'oracle' && (
+              <OracleView key="oracle" onBack={() => setCurrentView('holocron')} />
+            )}
 
-        {currentView === 'daily' && (
-          <DailyView key="daily" onBack={() => setCurrentView('holocron')} onToggleSave={toggleSave} savedExcerpts={savedExcerpts} />
-        )}
+            {currentView === 'daily' && (
+              <DailyView key="daily" onBack={() => setCurrentView('holocron')} onToggleSave={toggleSave} savedExcerpts={savedExcerpts} />
+            )}
 
-        {currentView === 'saved' && (
-          <SavedView key="saved" onBack={() => setCurrentView('holocron')} savedExcerpts={savedExcerpts} onToggleSave={toggleSave} onOpenArticle={handleOpenArticle} />
-        )}
+            {currentView === 'saved' && (
+              <SavedView key="saved" onBack={() => setCurrentView('holocron')} savedExcerpts={savedExcerpts} onToggleSave={toggleSave} onOpenArticle={handleOpenArticle} />
+            )}
 
-        {currentView === 'timeline' && (
-          <TimelineView key="timeline" onBack={() => setCurrentView('holocron')} onOpenArticle={handleOpenArticle} />
-        )}
+            {currentView === 'timeline' && (
+              <TimelineView key="timeline" onBack={() => setCurrentView('holocron')} onOpenArticle={handleOpenArticle} />
+            )}
 
-        {currentView === 'civilizations' && (
-          <CivilizationsView
-            key="civilizations"
-            onBack={() => setCurrentView('holocron')}
-            onSelectCivilization={handleSelectCivilization}
-          />
-        )}
+            {currentView === 'civilizations' && (
+              <CivilizationsView
+                key="civilizations"
+                onBack={() => setCurrentView('holocron')}
+                onSelectCivilization={handleSelectCivilization}
+              />
+            )}
 
-        {currentView === 'civilization-detail' && selectedCivilization && (
-          <CivilizationDetail
-            key="civilization-detail"
-            civilization={selectedCivilization}
-            onBack={() => setCurrentView('civilizations')}
-            onOpenArticle={handleOpenArticle}
-          />
-        )}
+            {currentView === 'civilization-detail' && selectedCivilization && (
+              <CivilizationDetail
+                key="civilization-detail"
+                civilization={selectedCivilization}
+                onBack={() => setCurrentView('civilizations')}
+                onOpenArticle={handleOpenArticle}
+              />
+            )}
 
-        {currentView === 'topics' && (
-          <TopicView
-            key="topics"
-            onBack={() => setCurrentView('holocron')}
-            onOpenArticle={handleOpenArticle}
-          />
-        )}
-      </AnimatePresence>
+            {currentView === 'topics' && (
+              <TopicView
+                key="topics"
+                onBack={() => setCurrentView('holocron')}
+                onOpenArticle={handleOpenArticle}
+              />
+            )}
+          </AnimatePresence>
+        </Suspense>
+      </ErrorBoundary>
 
       {/* Global Article Overlay */}
       <AnimatePresence>

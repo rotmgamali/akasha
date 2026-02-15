@@ -133,6 +133,7 @@ const HolocronView = ({ onNavigate, onToggleSave, savedExcerpts, onOpenArticle }
                         placeholder="Search the Akashic Records..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
+                        aria-label="Search the Akashic Records"
                         className="w-full bg-white/5 border border-white/10 rounded-full pl-12 pr-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-all font-light"
                     />
                 </div>

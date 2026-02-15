@@ -137,25 +137,28 @@ const OracleView = ({ onBack }) => {
                 <div ref={messagesEndRef} />
             </div>
 
-            {/* Input Area */}
             <div className="p-4 md:p-6 bg-black/40 backdrop-blur-md border-t border-white/5 relative z-10">
-                <div className="max-w-4xl mx-auto flex gap-4">
+                <form
+                    onSubmit={(e) => { e.preventDefault(); handleSend(); }}
+                    className="max-w-4xl mx-auto flex gap-4"
+                >
                     <input
                         type="text"
                         value={inputText}
                         onChange={(e) => setInputText(e.target.value)}
-                        onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                         placeholder="Ask the Source Consciousness..."
+                        aria-label="Oracle Query Input"
                         className="flex-1 bg-white/5 border border-white/10 rounded-full px-6 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50 focus:bg-white/10 transition-all font-light"
                     />
                     <button
-                        onClick={handleSend}
+                        type="submit"
                         disabled={!inputText.trim()}
+                        aria-label="Send Query"
                         className="p-3 bg-purple-600/30 hover:bg-purple-600/50 border border-purple-500/30 rounded-full text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         <Send className="w-5 h-5" />
                     </button>
-                </div>
+                </form>
             </div>
         </div>
     );
