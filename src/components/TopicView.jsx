@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Share2, Hexagon, Zap, BookOpen, Circle, Star, Activity, Mountain, Wind } from 'lucide-react';
 import { galacticLore } from '../data/galactic_lore';
@@ -16,7 +16,7 @@ const IconMap = {
     Wind: Wind
 };
 
-const TopicView = ({ onBack, onOpenArticle }) => {
+const TopicView = memo(({ onBack, onOpenArticle }) => {
     const [selectedTopic, setSelectedTopic] = useState(null);
 
     // Helper to find articles related to a topic
@@ -165,6 +165,9 @@ const TopicView = ({ onBack, onOpenArticle }) => {
             </main>
         </div>
     );
-};
+});
+
+// Display name for React DevTools
+TopicView.displayName = 'TopicView';
 
 export default TopicView;

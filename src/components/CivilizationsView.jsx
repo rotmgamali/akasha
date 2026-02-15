@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Star, Sun, Droplets, Circle, Hexagon, Mountain, Wind } from 'lucide-react';
 import { galacticLore } from '../data/galactic_lore';
@@ -14,7 +14,7 @@ const IconMap = {
     Droplets: Droplets
 };
 
-const CivilizationsView = ({ onBack, onSelectCivilization }) => {
+const CivilizationsView = memo(({ onBack, onSelectCivilization }) => {
     return (
         <div className="min-h-screen bg-deep-space text-white overflow-y-auto relative font-sans">
             {/* Dynamic Background */}
@@ -92,6 +92,8 @@ const CivilizationsView = ({ onBack, onSelectCivilization }) => {
             </main>
         </div>
     );
-};
+});
+
+CivilizationsView.displayName = 'CivilizationsView';
 
 export default CivilizationsView;
