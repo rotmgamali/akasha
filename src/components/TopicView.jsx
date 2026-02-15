@@ -33,13 +33,13 @@ const TopicView = ({ onBack, onOpenArticle }) => {
     };
 
     return (
-        <div className="min-h-screen bg-deep-space text-white relative font-sans overflow-hidden">
+        <div className="min-h-screen bg-deep-space text-white relative font-sans overflow-y-auto">
             {/* Background with slow rotation */}
             <div className="fixed inset-0 bg-[url('/starfield-bg.jpg')] opacity-20 bg-cover bg-center animate-spin-slow pointer-events-none" />
             <div className="fixed inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none" />
 
             {/* Header */}
-            <header className="relative z-10 p-6 flex justify-between items-center border-b border-white/5 backdrop-blur-md">
+            <header className="relative z-10 p-6 flex justify-between items-center border-b border-white/5 backdrop-blur-md sticky top-0 bg-deep-space/80">
                 <button onClick={onBack} className="flex items-center gap-2 text-cyan-300 hover:text-white transition-colors">
                     <ArrowLeft className="w-5 h-5" />
                     <span className="font-cinzel text-sm hidden sm:block">Return to Hub</span>
@@ -50,7 +50,7 @@ const TopicView = ({ onBack, onOpenArticle }) => {
                 <div className="w-24" />
             </header>
 
-            <main className="relative z-10 p-8 h-[calc(100vh-80px)] flex flex-col items-center justify-center">
+            <main className="relative z-10 p-8 min-h-[calc(100vh-80px)] flex flex-col items-center justify-center">
 
                 {/* The Constellation Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto w-full relative">
@@ -107,9 +107,18 @@ const TopicView = ({ onBack, onOpenArticle }) => {
                             initial={{ opacity: 0, y: 100 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 100 }}
-                            className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-xl border-t border-white/10 p-8 h-[50vh] overflow-y-auto"
+                            className="absolute bottom-0 left-0 right-0 bg-black/90 backdrop-blur-2xl border-t border-white/10 p-6 md:p-8 h-[70vh] md:h-[60vh] overflow-y-auto z-40 rounded-t-[2rem]"
                         >
-                            <div className="max-w-4xl mx-auto">
+                            {/* Background Image Underlay for Detail */}
+                            <div
+                                className="absolute inset-0 opacity-15 pointer-events-none"
+                                style={{
+                                    backgroundImage: `url(${topicImages[selectedTopic.id]})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                }}
+                            />
+                            <div className="relative z-10 max-w-4xl mx-auto">
                                 <div className="flex justify-between items-start mb-6">
                                     <div>
                                         <h2 className="text-3xl font-cinzel text-cyan-400 mb-2">{selectedTopic.name}</h2>

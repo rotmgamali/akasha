@@ -137,23 +137,32 @@ const TimelineView = ({ onBack, onOpenArticle }) => {
                                     onClick={() => onOpenArticle(item)}
                                     className="bg-white/5 backdrop-blur-md border border-white/5 rounded-2xl p-6 hover:bg-white/10 hover:border-purple-500/30 transition-all cursor-pointer group hover:shadow-[0_0_30px_rgba(139,92,246,0.1)] relative overflow-hidden"
                                 >
-                                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 via-purple-500/0 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-
-                                    <div className={`flex flex-col gap-1 mb-4 relative z-10 ${index % 2 === 0 ? 'md:items-start' : 'md:items-end'} items-start`}>
-                                        <span className="text-pink-400 font-mono text-[10px] tracking-widest uppercase border border-pink-500/20 px-2 py-1 rounded-full bg-pink-500/5">{item.sphereTitle}</span>
-                                        <div className="flex items-center gap-2 text-gray-400 text-xs font-mono mt-2">
-                                            <Calendar className="w-3 h-3" />
-                                            {item.formattedDate}
+                                    {/* Card Background Image */}
+                                    <div
+                                        className="absolute inset-0 opacity-10 pointer-events-none transition-opacity group-hover:opacity-20"
+                                        style={{
+                                            backgroundImage: `url(${sphereImages[item.sphereId] || ''})`,
+                                            backgroundSize: 'cover',
+                                            backgroundPosition: 'center',
+                                        }}
+                                    />
+                                    <div className="relative z-10">
+                                        <div className={`flex flex-col gap-1 mb-4 relative z-10 ${index % 2 === 0 ? 'md:items-start' : 'md:items-end'} items-start`}>
+                                            <span className="text-pink-400 font-mono text-[10px] tracking-widest uppercase border border-pink-500/20 px-2 py-1 rounded-full bg-pink-500/5">{item.sphereTitle}</span>
+                                            <div className="flex items-center gap-2 text-gray-400 text-xs font-mono mt-2">
+                                                <Calendar className="w-3 h-3" />
+                                                {item.formattedDate}
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <p className="text-gray-200 text-sm md:text-base leading-relaxed font-light mb-4 line-clamp-4 group-hover:text-white transition-colors relative z-10">
-                                        {item.content}
-                                    </p>
+                                        <p className="text-gray-200 text-sm md:text-base leading-relaxed font-light mb-4 line-clamp-4 group-hover:text-white transition-colors relative z-10">
+                                            {item.content}
+                                        </p>
 
-                                    <div className={`flex items-center gap-2 text-quantum-cyan text-xs uppercase tracking-widest font-bold relative z-10 ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'} justify-start`}>
-                                        <BookOpen className="w-3 h-3" />
-                                        Read Transmission
+                                        <div className={`flex items-center gap-2 text-quantum-cyan text-xs uppercase tracking-widest font-bold relative z-10 ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'} justify-start`}>
+                                            <BookOpen className="w-3 h-3" />
+                                            Read Transmission
+                                        </div>
                                     </div>
                                 </div>
                             </div>

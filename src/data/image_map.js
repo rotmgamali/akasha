@@ -1,10 +1,10 @@
 // Image mappings for all interactive elements
 export const sphereImages = {
-    'universal-metaphysics': '/images/sphere_universal_metaphysics_1771110860702.png',
-    'cosmic-cycles': '/images/sphere_cosmic_cycles_1771110877373.png',
-    'galactic-history': '/images/sphere_galactic_history_1771110893051.png',
+    'universal-metaphysics-the-law-of-one': '/images/sphere_universal_metaphysics_1771110860702.png',
+    'cosmic-cycles-earth-changes': '/images/sphere_cosmic_cycles_1771110877373.png',
+    'galactic-history-exopolitics': '/images/sphere_galactic_history_1771110893051.png',
     'ascension-mechanics': '/images/sphere_ascension_mechanics_1771110908281.png',
-    'planetary-transition': '/images/sphere_planetary_transition_1771110924369.png'
+    'planetary-transition-current-events': '/images/sphere_planetary_transition_1771110924369.png'
 };
 
 export const civilizationImages = {

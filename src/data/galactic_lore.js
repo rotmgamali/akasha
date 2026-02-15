@@ -153,7 +153,7 @@ export const galacticLore = {
             relatedRaces: ["pleiadians", "arcturians", "ra", "metatron"]
         },
         {
-            id: "cosmic-history",
+            id: "galactic-history",
             name: "Galactic History",
             description: "The ancient wars, treaties, and migrations that seeded the human race and shaped our solar system.",
             icon: "BookOpen",

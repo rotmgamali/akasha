@@ -34,7 +34,7 @@ const CivilizationDetail = ({ civilization, onBack, onOpenArticle }) => {
     if (!civilization) return null;
 
     return (
-        <div className="min-h-screen bg-deep-space text-white relative font-sans">
+        <div className="min-h-screen bg-deep-space text-white relative font-sans overflow-y-auto custom-scrollbar">
             {/* Hero Background */}
             <div className={`fixed inset-0 bg-gradient-to-br opacity-20 ${civilization.gradient} pointer-events-none`} />
             <div className="fixed inset-0 bg-[url('/noise.png')] opacity-10 pointer-events-none" />

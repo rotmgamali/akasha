@@ -22,7 +22,7 @@ const DailyView = ({ onBack, onToggleSave, isSaved }) => {
     if (!dailyWisdom) return null;
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center relative p-6 bg-deep-space">
+        <div className="min-h-screen flex flex-col items-center justify-start md:justify-center relative p-6 bg-deep-space overflow-y-auto custom-scrollbar">
             {/* Background Image Underlay */}
             <div
                 className="absolute inset-0 opacity-20 pointer-events-none"
@@ -35,8 +35,8 @@ const DailyView = ({ onBack, onToggleSave, isSaved }) => {
             <div className="absolute inset-0 bg-galaxy-gradient opacity-10 pointer-events-none" />
 
             {/* Header Controls */}
-            <div className="absolute top-6 left-6 z-20">
-                <button onClick={onBack} className="p-2 hover:bg-white/10 rounded-full transition-colors">
+            <div className="fixed top-6 left-6 z-20">
+                <button onClick={onBack} className="p-2 hover:bg-white/10 rounded-full transition-colors bg-black/20 backdrop-blur-md border border-white/10">
                     <ArrowLeft className="w-6 h-6 text-purple-300" />
                 </button>
             </div>
@@ -45,10 +45,10 @@ const DailyView = ({ onBack, onToggleSave, isSaved }) => {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.8 }}
-                className="w-full max-w-2xl relative z-10"
+                className="w-full max-w-2xl relative z-10 mt-20 md:mt-0 pb-10"
             >
                 {/* Card Container */}
-                <div className="glass-panel p-8 md:p-12 rounded-3xl border border-white/10 shadow-[0_0_50px_rgba(139,92,246,0.1)] relative overflow-hidden">
+                <div className="glass-panel p-6 md:p-12 rounded-3xl border border-white/10 shadow-[0_0_50px_rgba(139,92,246,0.1)] relative overflow-hidden">
 
                     {/* Decorative Glow */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -mr-20 -mt-20"></div>

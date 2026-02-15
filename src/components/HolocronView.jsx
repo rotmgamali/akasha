@@ -155,7 +155,7 @@ const HolocronView = ({ onNavigate, onToggleSave, savedExcerpts, onOpenArticle }
                                 <div
                                     className="absolute inset-0 transition-all duration-500"
                                     style={{
-                                        backgroundImage: `url(${sphereImages[sphere.id]})`,
+                                        backgroundImage: `url(${sphereImages[sphere.id] || ''})`,
                                         backgroundSize: 'cover',
                                         backgroundPosition: 'center',
                                         opacity: isSelected ? 0.4 : 0.25
@@ -203,20 +203,31 @@ const HolocronView = ({ onNavigate, onToggleSave, savedExcerpts, onOpenArticle }
                                                     <div
                                                         key={idx}
                                                         onClick={(e) => { e.stopPropagation(); onOpenArticle({ ...excerpt, sphereTitle: sphere.title }); }}
-                                                        className="bg-white/5 hover:bg-white/10 p-4 rounded-xl border border-white/5 hover:border-cyan-500/30 transition-all cursor-pointer group"
+                                                        className="bg-white/5 hover:bg-white/10 p-4 rounded-xl border border-white/5 hover:border-cyan-500/30 transition-all cursor-pointer group relative overflow-hidden"
                                                     >
-                                                        <div className="flex justify-between items-start mb-2">
-                                                            <span className="text-xs font-mono text-gray-500">{excerpt.date}</span>
-                                                            <Bookmark
-                                                                className={`w-3 h-3 hover:scale-110 transition-transform ${savedExcerpts?.some(s => s.content === excerpt.content) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-600'}`}
-                                                                onClick={(e) => { e.stopPropagation(); onToggleSave(excerpt); }}
-                                                            />
-                                                        </div>
-                                                        <p className="text-sm text-gray-300 line-clamp-3 font-light leading-relaxed group-hover:text-white transition-colors">
-                                                            {excerpt.content}
-                                                        </p>
-                                                        <div className="mt-3 text-xs font-bold text-cyan-500/70 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-                                                            Read Transmission
+                                                        {/* Decorative Card Background */}
+                                                        <div
+                                                            className="absolute inset-0 opacity-10 pointer-events-none transition-opacity group-hover:opacity-20"
+                                                            style={{
+                                                                backgroundImage: `url(${sphereImages[sphere.id] || ''})`,
+                                                                backgroundSize: 'cover',
+                                                                backgroundPosition: 'center',
+                                                            }}
+                                                        />
+                                                        <div className="relative z-10">
+                                                            <div className="flex justify-between items-start mb-2">
+                                                                <span className="text-xs font-mono text-gray-500">{excerpt.date}</span>
+                                                                <Bookmark
+                                                                    className={`w-3 h-3 hover:scale-110 transition-transform ${savedExcerpts?.some(s => s.content === excerpt.content) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-600'}`}
+                                                                    onClick={(e) => { e.stopPropagation(); onToggleSave(excerpt); }}
+                                                                />
+                                                            </div>
+                                                            <p className="text-sm text-gray-300 line-clamp-3 font-light leading-relaxed group-hover:text-white transition-colors">
+                                                                {excerpt.content}
+                                                            </p>
+                                                            <div className="mt-3 text-xs font-bold text-cyan-500/70 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                                                                Read Transmission
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 ))}
