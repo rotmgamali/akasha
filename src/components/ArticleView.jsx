@@ -52,24 +52,17 @@ const ArticleView = ({ excerpt, onClose, onToggleSave, isSaved }) => {
             {/* Dynamic Background */}
             <div className={`fixed inset-0 bg-gradient-to-br ${gradient} opacity-5 pointer-events-none`} />
 
-            {/* Contextual Master Image Background */}
-            <AnimatePresence mode="wait">
-                {bgImage && (
-                    <motion.div
-                        key={bgImage}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 0.25 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 1 }}
-                        className="fixed inset-0 pointer-events-none"
-                        style={{
-                            backgroundImage: `url(${bgImage})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                        }}
-                    />
-                )}
-            </AnimatePresence>
+            {/* Background Image Underlay (subtle) */}
+            {bgImage && (
+                <div
+                    className="fixed inset-0 opacity-10 pointer-events-none"
+                    style={{
+                        backgroundImage: `url(${bgImage})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}
+                />
+            )}
 
             <div className="fixed inset-0 bg-[url('/noise.png')] opacity-20 pointer-events-none" />
 
