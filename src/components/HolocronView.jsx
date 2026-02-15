@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Globe, Filter, Database, MessageSquare, Sun, Bookmark, Star, ArrowLeft, Hexagon, X, ChevronRight, Activity } from 'lucide-react';
-import wisdomData from '../data/wisdom_data.json';
+import wisdomData from '../data/demo_content.json';
 import { sphereImages } from '../data/image_map';
 
 const HolocronView = ({ onNavigate, onToggleSave, savedExcerpts, onOpenArticle }) => {

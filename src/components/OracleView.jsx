@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, ArrowLeft, Sparkles } from 'lucide-react';
-import wisdomData from '../data/wisdom_data.json';
+import { Send, Sparkles, X, ArrowLeft } from 'lucide-react';
+import wisdomData from '../data/demo_content.json';
 import { masterImages } from '../data/image_map';
 
 const OracleView = ({ onBack }) => {
@@ -72,7 +72,7 @@ const OracleView = ({ onBack }) => {
             return bestMatch.content;
         } else {
             const randomExcerpt = allExcerpts[Math.floor(Math.random() * allExcerpts.length)];
-            return `The records do not hold a direct answer to that specific resonance, but here is a transmission that aligns with your current vibration:\n\n${randomExcerpt.content}`;
+            return `The records do not hold a direct answer to that specific resonance, but here is a transmission that may illuminate your path: \\n\\n${randomExcerpt.content} `;
         }
     };
 
@@ -111,12 +111,12 @@ const OracleView = ({ onBack }) => {
                         key={msg.id}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                        className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} `}
                     >
-                        <div className={`max-w-[85%] md:max-w-[70%] p-4 rounded-2xl ${msg.sender === 'user'
-                            ? 'bg-purple-600/20 border border-purple-500/30 text-white rounded-tr-none'
-                            : 'bg-white/5 border border-white/10 text-purple-100 rounded-tl-none'
-                            }`}>
+                        <div className={`max - w - [85 %] md: max - w - [70 %] p - 4 rounded - 2xl ${msg.sender === 'user'
+                                ? 'bg-purple-600/20 border border-purple-500/30 text-white rounded-tr-none'
+                                : 'bg-white/5 border border-white/10 text-purple-100 rounded-tl-none'
+                            } `}>
                             <p className="text-sm md:text-base font-light leading-relaxed whitespace-pre-wrap">{msg.text}</p>
                         </div>
                     </motion.div>

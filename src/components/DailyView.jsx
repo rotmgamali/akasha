@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Sun, ArrowLeft, RefreshCw, Share2, Bookmark } from 'lucide-react';
-import wisdomData from '../data/wisdom_data.json';
+import wisdomData from '../data/demo_content.json';
 import { masterImages } from '../data/image_map';
 
 const DailyView = ({ onBack, onToggleSave, isSaved }) => {

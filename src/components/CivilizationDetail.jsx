@@ -1,10 +1,12 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, MapPin, Activity, Info } from 'lucide-react';
-import wisdomData from '../data/wisdom_data.json';
+import wisdomData from '../data/demo_content.json';
 import { civilizationImages } from '../data/image_map';
 
 const CivilizationDetail = ({ civilization, onBack, onOpenArticle }) => {
+    const [activeTab, setActiveTab] = useState('overview');
+
     // Filter wisdom data for this civilization
     // This is a naive filter based on string matching the civilization name or keywords in source/content
     const civilizationTransmissions = useMemo(() => {
@@ -92,77 +94,111 @@ const CivilizationDetail = ({ civilization, onBack, onOpenArticle }) => {
                     </motion.div>
                 </div>
 
-                {/* Info Grid */}
-                <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-                    <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10">
-                        <h3 className="flex items-center gap-2 font-cinzel text-xl text-purple-300 mb-6">
-                            <Activity className="w-5 h-5" /> Key Traits
-                        </h3>
-                        <ul className="space-y-4">
-                            {civilization.traits.map((trait, i) => (
-                                <li key={i} className="flex items-center gap-3 text-gray-300 font-light">
-                                    <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full" />
-                                    {trait}
-                                </li>
-                            ))}
-                        </ul>
+                {/* Tabbed Content Section */}
+                <div className="max-w-6xl mx-auto px-6">
+                    {/* Tab Navigation */}
+                    <div className="flex gap-2 md:gap-4 border-b border-white/10 mb-8 overflow-x-auto">
+                        {['overview', 'traits', 'transmissions'].map((tab) => (
+                            <button
+                                key={tab}
+                                onClick={() => setActiveTab(tab)}
+                                className={`px-4 md:px-6 py-3 font-mono text-xs md:text-sm uppercase tracking-widest transition-all whitespace-nowrap ${activeTab === tab
+                                    ? 'text-white border-b-2 border-cyan-500'
+                                    : 'text-gray-500 hover:text-gray-300'
+                                    }`}
+                            >
+                                {tab}
+                            </button>
+                        ))}
                     </div>
 
-                    <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 md:col-span-2">
-                        <h3 className="flex items-center gap-2 font-cinzel text-xl text-blue-300 mb-6">
-                            <Info className="w-5 h-5" /> Biological & Energetic Signature
-                        </h3>
-                        <div className="prose prose-invert max-w-none text-gray-300 font-light leading-relaxed">
-                            <p>{civilization.appearance}</p>
-                            <p className="mt-4">
-                                <strong>Theme:</strong> {civilization.theme}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Transmission Feed */}
-                <div className="max-w-7xl mx-auto px-6 md:px-12">
-                    <h2 className="text-3xl font-cinzel text-white mb-8 border-b border-white/10 pb-4 flex justify-between items-end">
-                        <span>Archives // Transmissions</span>
-                        <span className="text-xs font-mono text-gray-500 mb-1">{civilizationTransmissions.length} Records Found</span>
-                    </h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {civilizationTransmissions.length > 0 ? (
-                            civilizationTransmissions.map((excerpt, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.05 }}
-                                    onClick={() => onOpenArticle(excerpt)}
-                                    className="bg-black/40 backdrop-blur-sm rounded-xl p-8 border border-white/5 hover:border-purple-500/40 hover:bg-white/5 transition-all cursor-pointer group"
-                                >
-                                    <div className="flex justify-between items-start mb-4">
-                                        <div className="text-xs font-mono text-gray-500 uppercase">{excerpt.date}</div>
-                                        <BookOpen className="w-4 h-4 text-gray-600 group-hover:text-cyan-400 transition-colors" />
+                    {/* Overview Tab */}
+                    {activeTab === 'overview' && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="space-y-6"
+                        >
+                            <div className="glass-panel p-6 md:p-8 rounded-2xl">
+                                <h3 className="text-2xl font-cinzel mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
+                                    Civilization Overview
+                                </h3>
+                                <p className="text-gray-300 leading-relaxed mb-4">{civilization.theme}</p>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                                    <div className="bg-white/5 p-4 rounded-lg border border-white/10">
+                                        <div className="text-xs text-gray-500 font-mono uppercase mb-1">Star System</div>
+                                        <div className="text-white font-semibold">{civilization.system}</div>
                                     </div>
-                                    <h4 className="font-cinzel text-lg text-gray-200 mb-2 group-hover:text-white transition-colors">
-                                        Transmission #{idx + 1}
-                                    </h4>
-                                    <p className="text-gray-400 line-clamp-3 font-light text-sm leading-relaxed mb-4">
-                                        {excerpt.content}
-                                    </p>
-                                    <div className="flex items-center gap-2 text-xs font-bold text-purple-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-                                        Access Data <ArrowLeft className="w-3 h-3 rotate-180" />
+                                    <div className="bg-white/5 p-4 rounded-lg border border-white/10">
+                                        <div className="text-xs text-gray-500 font-mono uppercase mb-1">Density Level</div>
+                                        <div className="text-white font-semibold">{civilization.density}</div>
                                     </div>
-                                </motion.div>
-                            ))
-                        ) : (
-                            <div className="col-span-full py-20 text-center text-gray-500 italic">
-                                No direct transmissions found in the current sector archives.
+                                </div>
                             </div>
-                        )}
-                    </div>
-                </div>
+                        </motion.div>
+                    )}
 
+                    {/* Traits Tab */}
+                    {activeTab === 'traits' && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                        >
+                            {civilization.traits.map((trait, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: i * 0.1 }}
+                                    className="glass-panel p-6 rounded-xl border border-white/10 hover:border-cyan-500/30 transition-all"
+                                >
+                                    <div className="text-3xl mb-3">{trait.icon}</div>
+                                    <h4 className="text-white font-semibold mb-2">{trait.name}</h4>
+                                    <p className="text-sm text-gray-400">{trait.description}</p>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    )}
+
+                    {/* Transmissions Tab */}
+                    {activeTab === 'transmissions' && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="space-y-6"
+                        >
+                            {civilizationTransmissions.length > 0 ? (
+                                civilizationTransmissions.map((trans, index) => (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: index * 0.1 }}
+                                        onClick={() => onOpenArticle(trans)}
+                                        className="glass-panel p-6 rounded-2xl border border-white/10 hover:border-purple-500/30 transition-all cursor-pointer group"
+                                    >
+                                        <div className="flex justify-between items-start mb-3">
+                                            <span className="text-xs font-mono text-cyan-400">{trans.sphereTitle}</span>
+                                            <span className="text-xs text-gray-500">{trans.date}</span>
+                                        </div>
+                                        <p className="text-gray-300 leading-relaxed line-clamp-3 group-hover:text-white transition-colors">
+                                            {trans.content}
+                                        </p>
+                                        <div className="mt-3 text-xs font-bold text-cyan-500/70 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                                            Read Full Transmission →
+                                        </div>
+                                    </motion.div>
+                                ))
+                            ) : (
+                                <div className="text-center py-12 text-gray-500">
+                                    <BookOpen className="w-12 h-12 mx-auto mb-4 opacity-30" />
+                                    <p className="font-mono text-sm">No transmissions available for this civilization.</p>
+                                </div>
+                            )}
+                        </motion.div>
+                    )}
+                </div>
             </div>
         </div>
     );

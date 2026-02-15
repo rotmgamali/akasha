@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Calendar, Clock, ChevronDown, ChevronUp, Filter, BookOpen } from 'lucide-react';
-import wisdomData from '../data/wisdom_data.json';
+import wisdomData from '../data/demo_content.json';
 import { masterImages } from '../data/image_map';
 
 const TimelineView = ({ onBack, onOpenArticle }) => {
