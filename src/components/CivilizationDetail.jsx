@@ -1,5 +1,4 @@
-import React, { useMemo, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
 import { ArrowLeft, BookOpen, MapPin, Activity, Info } from 'lucide-react';
 import wisdomData from '../data/demo_content.json';
 import { civilizationImages } from '../data/image_map';
@@ -38,7 +37,7 @@ const CivilizationDetail = ({ civilization, onBack, onOpenArticle }) => {
     return (
         <div className="min-h-screen bg-deep-space text-white relative font-sans overflow-y-auto custom-scrollbar">
             {/* Hero Background */}
-            <div className={`fixed inset-0 bg-gradient-to-br opacity-20 ${civilization.gradient} pointer-events-none`} />
+            <div className={`fixed inset - 0 bg - gradient - to - br opacity - 20 ${civilization.gradient} pointer - events - none`} />
             <div className="fixed inset-0 bg-[url('/noise.png')] opacity-10 pointer-events-none" />
 
             {/* Scrollable Content */}
@@ -66,7 +65,7 @@ const CivilizationDetail = ({ civilization, onBack, onOpenArticle }) => {
                     />
 
                     {/* Gradient Overlay */}
-                    <div className={`absolute inset-0 bg-gradient-to-b opacity-80 ${civilization.gradient}`} />
+                    <div className={`absolute inset - 0 bg - gradient - to - b opacity - 80 ${civilization.gradient} `} />
                     <div className="absolute inset-0 bg-black/50" />
 
                     <motion.div
@@ -102,10 +101,10 @@ const CivilizationDetail = ({ civilization, onBack, onOpenArticle }) => {
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
-                                className={`px-4 md:px-6 py-3 font-mono text-xs md:text-sm uppercase tracking-widest transition-all whitespace-nowrap ${activeTab === tab
-                                    ? 'text-white border-b-2 border-cyan-500'
-                                    : 'text-gray-500 hover:text-gray-300'
-                                    }`}
+                                className={`px - 4 md: px - 6 py - 3 font - mono text - xs md: text - sm uppercase tracking - widest transition - all whitespace - nowrap ${activeTab === tab
+                                        ? 'text-white border-b-2 border-cyan-500'
+                                        : 'text-gray-500 hover:text-gray-300'
+                                    } `}
                             >
                                 {tab}
                             </button>

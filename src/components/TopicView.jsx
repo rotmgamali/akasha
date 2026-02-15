@@ -1,5 +1,5 @@
-import React, { useState, useMemo, memo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, memo } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Share2, Hexagon, Zap, BookOpen, Circle, Star, Activity, Mountain, Wind } from 'lucide-react';
 import { galacticLore } from '../data/galactic_lore';
 import wisdomData from '../data/wisdom_data.json';

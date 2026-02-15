@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, ArrowLeft, RefreshCw, Share2, Bookmark } from 'lucide-react';
 import wisdomData from '../data/demo_content.json';
 import { masterImages } from '../data/image_map';
@@ -7,17 +7,20 @@ import { masterImages } from '../data/image_map';
 const DailyView = ({ onBack, onToggleSave, isSaved }) => {
     const [dailyWisdom, setDailyWisdom] = useState(null);
 
+    const pickRandomWisdom = () => {
+        const allExcerpts = wisdomData.spheres.flatMap(sphere =>
+            sphere.excerpts.map(excerpt => ({ ...excerpt, sphereTitle: sphere.title }))
+        );
+        const random = allExcerpts[Math.floor(Math.random() * allExcerpts.length)];
+        setDailyWisdom(random);
+    };
+
     useEffect(() => {
+        // Pick a random piece of wisdom on mount.
         // In a real app, this could be seeded by the date to remain consistent for 24 hours.
         // For now, we'll randomize it on mount.
         pickRandomWisdom();
     }, []);
-
-    const pickRandomWisdom = () => {
-        const allExcerpts = wisdomData.spheres.flatMap(s => s.excerpts);
-        const random = allExcerpts[Math.floor(Math.random() * allExcerpts.length)];
-        setDailyWisdom(random);
-    };
 
     if (!dailyWisdom) return null;
 

@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Star, Sun, Droplets, Circle, Hexagon, Mountain, Wind } from 'lucide-react';
 import { galacticLore } from '../data/galactic_lore';
 import { civilizationImages } from '../data/image_map';

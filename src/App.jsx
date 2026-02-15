@@ -1,5 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import Starfield from './components/Starfield';
 import StarfieldLoading from './components/StarfieldLoading';
 import ErrorBoundary from './components/ErrorBoundary';

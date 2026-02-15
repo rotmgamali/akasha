@@ -1,32 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useMemo } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Clock, Calendar, Bookmark, Share2, X } from 'lucide-react';
 import { masterImages } from '../data/image_map';
 
 const ArticleView = ({ excerpt, onClose, onToggleSave, isSaved }) => {
-    const [readTime, setReadTime] = useState(0);
-    const [bgImage, setBgImage] = useState(null);
+    // Calculate read time from excerpt
+    const readTime = useMemo(() => {
+        if (!excerpt) return 0;
+        const words = excerpt.content.trim().split(/\s+/).length;
+        return Math.ceil(words / 200); // 200 words per minute
+    }, [excerpt]);
 
-    useEffect(() => {
-        if (excerpt) {
-            const words = excerpt.content.trim().split(/\s+/).length;
-            const time = Math.ceil(words / 200); // 200 words per minute
-            setReadTime(time);
-
-            // Determine relevant background image based on keywords
-            const content = excerpt.content.toLowerCase();
-            if (content.includes('solar flash') || content.includes('pulse') || content.includes('sun')) {
-                setBgImage(masterImages['solar-flash']);
-            } else if (content.includes('dna') || content.includes('genetic') || content.includes('molecule')) {
-                setBgImage(masterImages['dna-activation']);
-            } else if (content.includes('pyramid') || content.includes('giza') || content.includes('anchor')) {
-                setBgImage(masterImages['great-pyramid']);
-            } else if (content.includes('agartha') || content.includes('telos') || content.includes('inner earth')) {
-                setBgImage(masterImages['agartha']);
-            } else {
-                setBgImage(null);
-            }
-        }
+    // Determine background image based on excerpt content
+    const bgImage = useMemo(() => {
+        if (!excerpt) return null;
+        const content = excerpt.content.toLowerCase();
+        if (content.includes('pleiades') || content.includes('pleiadians')) return masterImages.pleiadians;
+        if (content.includes('arcturian')) return masterImages.arcturians;
+        if (content.includes('sirius') || content.includes('sirian')) return masterImages.sirians;
+        if (content.includes('lyra') || content.includes('lyran')) return masterImages.lyrans;
+        if (content.includes('andromeda')) return masterImages.andromedans;
+        // Fallback to a general portal image if no specific match
+        return masterImages.portal;
     }, [excerpt]);
 
     if (!excerpt) return null;
@@ -50,7 +45,7 @@ const ArticleView = ({ excerpt, onClose, onToggleSave, isSaved }) => {
             className="fixed inset-0 z-50 bg-deep-space flex justify-center overflow-y-auto custom-scrollbar"
         >
             {/* Dynamic Background */}
-            <div className={`fixed inset-0 bg-gradient-to-br ${gradient} opacity-5 pointer-events-none`} />
+            <div className={`fixed inset - 0 bg - gradient - to - br ${gradient} opacity - 5 pointer - events - none`} />
 
             {/* Background Image Underlay (subtle) */}
             {bgImage && (
@@ -68,7 +63,7 @@ const ArticleView = ({ excerpt, onClose, onToggleSave, isSaved }) => {
 
             {/* Progress Bar (at top) */}
             <motion.div
-                className={`fixed top-0 left-0 h-1 bg-gradient-to-r ${gradient} z-50`}
+                className={`fixed top - 0 left - 0 h - 1 bg - gradient - to - r ${gradient} z - 50`}
                 initial={{ width: 0 }}
                 animate={{ width: '100%' }}
                 transition={{ duration: 0.8, ease: "circOut" }}
@@ -89,10 +84,10 @@ const ArticleView = ({ excerpt, onClose, onToggleSave, isSaved }) => {
                     <div className="flex gap-2">
                         <button
                             onClick={() => onToggleSave(excerpt)}
-                            className={`p-2 rounded-full border transition-all ${isSaved(excerpt) ? 'border-pink-500/50 bg-pink-500/20 text-pink-200' : 'border-white/10 hover:bg-white/10 text-gray-400 hover:text-white'}`}
+                            className={`p - 2 rounded - full border transition - all ${isSaved(excerpt) ? 'border-pink-500/50 bg-pink-500/20 text-pink-200' : 'border-white/10 hover:bg-white/10 text-gray-400 hover:text-white'} `}
                             title={isSaved(excerpt) ? "Remove Bookmark" : "Bookmark Transmission"}
                         >
-                            <Bookmark className={`w-4 h-4 ${isSaved(excerpt) ? 'fill-current' : ''}`} />
+                            <Bookmark className={`w - 4 h - 4 ${isSaved(excerpt) ? 'fill-current' : ''} `} />
                         </button>
                     </div>
                 </header>
@@ -102,7 +97,7 @@ const ArticleView = ({ excerpt, onClose, onToggleSave, isSaved }) => {
 
                     {/* Meta Data */}
                     <div className="flex flex-wrap gap-4 items-center mb-6 md:mb-8 text-xs font-mono tracking-wider text-gray-500 border-b border-white/5 pb-6 md:pb-8">
-                        <span className={`px-2 py-1 rounded bg-gradient-to-r ${gradient} bg-opacity-10 text-white bg-clip-text text-transparent bg-clip-text font-bold uppercase`}>
+                        <span className={`px - 2 py - 1 rounded bg - gradient - to - r ${gradient} bg - opacity - 10 text - white bg - clip - text text - transparent bg - clip - text font - bold uppercase`}>
                             {excerpt.sphereTitle}
                         </span>
                         <span className="flex items-center gap-1">
@@ -117,7 +112,7 @@ const ArticleView = ({ excerpt, onClose, onToggleSave, isSaved }) => {
 
                     {/* Title */}
                     <h1 className="text-2xl md:text-5xl font-cinzel text-white leading-tight mb-8 md:mb-12 drop-shadow-lg">
-                        Transmission regarding <span className={`bg-gradient-to-r ${gradient} bg-clip-text text-transparent`}>
+                        Transmission regarding <span className={`bg - gradient - to - r ${gradient} bg - clip - text text - transparent`}>
                             {excerpt.content.split(' ').slice(0, 5).join(' ')}...
                         </span>
                     </h1>
